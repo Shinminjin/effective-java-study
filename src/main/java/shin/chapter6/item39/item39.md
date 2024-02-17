@@ -125,6 +125,37 @@ public class RunTests {
     }
 }
 ```
+Method.invoke 를 통해  정적 메서드 여부를 판단한다.
+
+```java
+
+public final class Method extends Executable {
+    ...
+    
+    @CallerSensitive
+    @ForceInline // to ensure Reflection.getCallerClass optimization
+    @IntrinsicCandidate
+    public Object invoke(Object obj, Object... args)
+            throws IllegalAccessException, IllegalArgumentException,
+            InvocationTargetException
+    {
+        if (!override) {
+            Class<?> caller = Reflection.getCallerClass();
+            checkAccess(caller, clazz,
+                    Modifier.isStatic(modifiers) ? null : obj.getClass(),
+                    modifiers);
+        }
+        MethodAccessor ma = methodAccessor; // read volatile
+        if (ma == null) {
+            ma = acquireMethodAccessor();
+        }
+        return ma.invoke(obj, args);
+    }
+}
+```
+![NullPointerException.png](NullPointerException.png)
+m.invoke(null): null값을 매개변수로 전달해, 정적 메서드가 아닐 경우,
+obj.getClass()에서 NullPointerException 이 발생하여, 테스트 실패 처리된다.
 
 **Output**
 
