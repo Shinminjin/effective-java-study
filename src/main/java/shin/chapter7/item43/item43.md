@@ -24,7 +24,7 @@ default V merge(K key, V value,
 }
 ```
 - 키, 값, 함수를 인수로 받으며, 주어진 키가 맵 안에 없다면 주어진 [키, 값] 쌍을 그대로 저장
-- 주어진 키가 맵 안에 있다면 함수 인자로 이전 값과 현재 값을 대입하여 [키, 함수의 결과] 쌍을 저장한다.
+- 주어진 키가 맵 안에 있다면 `remappingFunction`의 `apply` 인자로 이전 값과 현재 값을 대입하여 [키, 함수의 결과] 쌍을 저장한다.
 
 ```java
 // key가 맵 안에 없으면 키와 숫자 1을 매핑하고,
@@ -47,7 +47,7 @@ public final class Integer extends Number
 }
 ```
 
-매개변수에 람다대신 메서드 참조를 전달하면, 똑같은 결과를 더 보기 좋게 표현가능하다.
+merge 메서드 매개변수에 람다대신 메서드 참조를 전달하면, 똑같은 결과를 더 보기 좋게 표현가능하다.
 
 ```java
 // 정적 메서드 참조
@@ -67,7 +67,7 @@ Consumer<String> printString1 = (str) -> System.out.println(str);  // 람다 사
 Consumer<String> printString2 = System.out::println;               // 메서드 참조
 ```
 
-**메서드 참조에 사용하는 메서드 이름이 길다면 오히려 람다가 더 간결하게 표현될 수 있다.**
+**메서드 참조에 사용하는 클래스 이름이 길다면 오히려 람다가 더 간결하게 표현될 수 있다.**
 
 예를 들어 `GoshThisClassNameIsHumongous` 라는 클래스에 `action` 메서드를 참조한다고 해보자.
 
@@ -145,7 +145,7 @@ public class MethodReferencesExamples {
 
 ### 2) 한정적 메서드 참조
 
-- 한정적(bound)이라는 단어를 사용한 이유는 참조하는 메서드가 특정 객체의 변수로 제한되기 때문이다.
+- 한정적(bound)이라는 단어를 사용한 이유는 메서드 참조 시 특정 객체의 변수로 제한되기 때문이다.
 
 ```java
 Calendar.getInstance()::getTime
