@@ -212,6 +212,8 @@ void foreach_stream_adaptor() {
 
 Java 표준 라이브러리에서 제공하는 `StreamSupport.stream` 를 활용했다.
 
+하지만, 어댑터 메서드를 사용하면 `Stream`이나 `Iterable` 만 사용하는 것에 비해 속도가 느리다.
+
 - 메서드가 오직 스트림 파이프라인에서만 쓰일 걸 안다면 Stream을 반환해라
 - 반대로 반복문에서만 쓰일 걸 안다면 Iterable을 반환하라.
 - 하지만 공개 API를 작성할 때는 명확한 근거가 없다.
