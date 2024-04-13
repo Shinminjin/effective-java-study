@@ -7,29 +7,28 @@
 
 ## **Javadoc 사용법**
 
-javadoc 명령어 사용
+**javadoc 명령어 사용**
 
 ```java
 $ javadoc -d docs {file_name}.java
 ```
 
-한글 사용시 UTF-8로 인코딩 필요
+**한글 사용시 UTF-8로 인코딩 필요**
 
 ```java
 $ javadoc -d docs {file_name}.java -encoding UTF-8 -charset UTF-8 -docencoding UTF-8
 ```
 
-javadoc 명령어 실행
+**javadoc 명령어 실행**
 ![bash](image/bash.png)
 
-javadoc이 자동으로 웹페이지 생성 - *docs 디렉토리*
+**javadoc이 자동으로 웹페이지 생성 - docs 디렉토리**
 ![directory](image/directory.png)
 
-생성된 api문서 - *index.html*
+**생성된 api문서 - index.html**
 ![index_html](image/index_html.png)
 
 ## **Javadoc 주석 유의 사항**
-
 [**문서화 주석 작성법(How To Write Doc Comments)**](https://www.oracle.com/technical-resources/articles/java/javadoc-tool.html) 웹페이지를 참고하자.
 
 ### **API를 올바르게 문서화하는 방법**
@@ -47,7 +46,7 @@ javadoc이 자동으로 웹페이지 생성 - *docs 디렉토리*
 - 메서드가 성공적으로 수행된 후에 만족해야 하는 **사후조건**을 나열하자.
 - **부작용**도 문서화 하자.
 
-### 메서드 규약을 완벽하게 기술하려면 다음의 태그를 전부 활용해보자.
+### **메서드 규약을 완벽하게 기술하려면 다음의 태그를 전부 활용해보자.**
 
 - 모든 매개변수에 `@param` 태그
 - 반환타입이 void가 아니면 `@return` 태그
@@ -69,14 +68,12 @@ javadoc이 자동으로 웹페이지 생성 - *docs 디렉토리*
  */
 E get(int index);
 ```
-
-- 문서화 주석에 HTML 태그`<p>`와 `<i>`를 쓴 점에 주목하자.
+- 문서화 주석에 HTML 태그<p>와 <i>를 쓴 점에 주목하자.
 - 자바독 유틸리티는 문서화 주석을 HTML로 변환하므로 문서화 주석 안의 HTML 요소들이 최종 HTML 문서에 반영된다.
 
 **생성된 api 문서**
 ![method](image/method.png)
-
-- `<p>`: 하나의 문단을 만듦, `<i>`:기울임 꼴
+- `<p>` : 하나의 문단을 만듦, `<i>` :기울임 꼴
 
 ## **Javadoc 주석 태그**
 
@@ -133,7 +130,6 @@ E get(int index);
  */
 public interface Map<K, V> { ... }
 ```
-
 - **열거 타입**을 문서화할 때, 상수들에도 주석을 달아야 한다.
 
 ```java
@@ -154,7 +150,6 @@ public enum OrchestraSection {
     STRING
 }
 ```
-
 - **애너테이션 타입**을 문서화할 때, 멤버들에도 모두 주석을 달아야 한다.
 - 필드 설명은 명사구로 한다.
 
@@ -180,7 +175,7 @@ public @interface ExceptionTest {
 }
 ```
 
-## API 문서화에서 자주 누락되는 설명
+## **API 문서화에서 자주 누락되는 설명**
 
 **스레드 안정성**
 
