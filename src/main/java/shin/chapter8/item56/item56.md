@@ -68,7 +68,7 @@ $ javadoc -d docs {file_name}.java -encoding UTF-8 -charset UTF-8 -docencoding U
  */
 E get(int index);
 ```
-- 문서화 주석에 HTML 태그<p>와 <i>를 쓴 점에 주목하자.
+- 문서화 주석에 HTML 태그 `<p>`와 `<i>`를 쓴 점에 주목하자.
 - 자바독 유틸리티는 문서화 주석을 HTML로 변환하므로 문서화 주석 안의 HTML 요소들이 최종 HTML 문서에 반영된다.
 
 **생성된 api 문서**
