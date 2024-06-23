@@ -108,6 +108,7 @@ public class BogusPeriod {
 
 ![BogusPeriodOutput](BogusPeriodOutput.png)
 
+
 ### **해결방법 🔨**
 
 - `readObject` 를 정의하고, 유효성 검사를 실시한다.
