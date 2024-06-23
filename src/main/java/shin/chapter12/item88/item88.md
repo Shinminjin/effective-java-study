@@ -106,7 +106,6 @@ public class BogusPeriod {
 - 위 바이트스트림의 정보는 **start시각**이 **end시각**보다 **느리게** 조작했다.
 - 즉, 불변식을 깨뜨리는 객체로 역직렬화 되도록 조작되었다.
 
-**결과 )** `start`가 `end`보다 크다.
 ![BogusPeriodOutput](BogusPeriodOutput.png)
 
 ### **해결방법 🔨**
@@ -183,8 +182,6 @@ public static void main(String[] args) {
     System.out.println(p);
 }
 ```
-
-**결과**
 ![MutablePeriodSetOutput](MutablePeriodSetOutput.png)
 
 - 불변 객체 `Period` 를 직렬화 / 역직렬화한다고 생각할 수 있지만,
@@ -209,8 +206,6 @@ private void readObject(ObjectInputStream s) throws IOException, ClassNotFoundEx
        throw new InvalidObjectException(start +" after "+ end);
 }
 ```
-
-**결과**
 ![MutablePeriodDefenceOutput](MutablePeriodDefenceOutput.png)
 
 - 방어적 복사를 유효성 검사보다 앞서 수행하자.
