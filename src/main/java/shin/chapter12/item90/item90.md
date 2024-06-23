@@ -10,7 +10,7 @@
 
 ```java
 public final class Period implements Serializable {
-		// 불변 가능
+    // 불변 가능
     private final Date start;
     private final Date end;
 

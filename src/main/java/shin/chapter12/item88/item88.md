@@ -133,15 +133,17 @@ private Date 필드 참조를 추가하면 가변 Period 인스턴스를 만들 
 
 ```java
 public class MutablePeriod {
-	 // Period 인스턴스
-   public final Period period;
-	 // 시작 시각 필드 - 외부에서 접근할 수 없어야 한다.
-   public final Date start;
-	 // 종료 시각 필드 - 외부에서 접근할 수 없어야 한다.
-   public final Date end;
+    // Period 인스턴스
+    public final Period period;
+    
+    // 시작 시각 필드 - 외부에서 접근할 수 없어야 한다.
+    public final Date start;
+    
+    // 종료 시각 필드 - 외부에서 접근할 수 없어야 한다.
+    public final Date end;
 
-   public MutablePeriod() {
-       try {
+    public MutablePeriod() {
+        try {
            ByteArrayOutputStream bos = new ByteArrayOutputStream();
            ObjectOutputStream out = new ObjectOutputStream(bos);
 
@@ -174,11 +176,11 @@ public static void main(String[] args) {
     Period mutablePeriod = mp.period; // 불변 객체로 생성한 Period
     Date pEnd = mp.end; // MutablePeriod 클래스의 end 필드
 
-		// 시간을 되돌리자!
+    // 시간을 되돌리자!
     pEnd.setYear(78); // MutablePeriod 의 end 를 바꿨는데 ?
     System.out.println(p); // Period 의 값이 바뀐다.
 
-		// 60년대로 회귀
+    // 60년대로 회귀
     pEnd.setYear(69);
     System.out.println(p);
 }
@@ -196,14 +198,14 @@ public static void main(String[] args) {
 
 ```java
 private void readObject(ObjectInputStream s) throws IOException, ClassNotFoundException {
-   s.defaultReadObject();
+    s.defaultReadObject();
 
-   // 가변 요소들을 방어적으로 복사한다.
-   start = new Date(start.getTime());
-   end = new Date(end.getTime());
+    // 가변 요소들을 방어적으로 복사한다.
+    start = new Date(start.getTime());
+    end = new Date(end.getTime());
 
-	 // 불변식을 만족하는지 검사한다. (유효성 검사)
-   if (start.compareTo(end) > 0)
+    // 불변식을 만족하는지 검사한다. (유효성 검사)
+    if (start.compareTo(end) > 0)
        throw new InvalidObjectException(start +" after "+ end);
 }
 ```
